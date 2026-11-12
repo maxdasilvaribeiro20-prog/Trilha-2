@@ -1,23 +1,17 @@
-
-# Arquivos temporários da Unity
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 [Ll]ogs/
-[Mm]emoryCaptures/
-
-# Builds
-[Bb]uild/
-[Bb]uilds/
-
-# Configurações locais
-.vs/
+[Uu]ser[Ss]ettings/
 .vscode/
-[Uu]serSettings/
-
-# Arquivos do sistema
-.DS_Store
-Thumbs.db
 
 *.csproj
+*.sln
 *.slnx
+*.user
+*.pidb
+*.booproj
+*.svclog
+*.pdb
+*.mdb
+.DS_Store
