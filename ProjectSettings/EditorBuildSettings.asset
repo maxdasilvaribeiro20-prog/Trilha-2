@@ -8,11 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
-    path: Assets/Scenes/Gameplay.unity
+  - enabled: 1
+    path: Assets/Scenes/Cutscene.unity
     guid: 4f5d7de8d52b4dd4f829618e0eeceff1
   - enabled: 1
-    path: Assets/Pure Poly/Free Low Poly Nature Pack/Scenes/Mapa.unity
+    path: Assets/Scenes/Mapa.unity
     guid: 164fc101ab8f1584d9f3f9772734e457
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
