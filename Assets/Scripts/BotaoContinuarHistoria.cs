@@ -31,7 +31,7 @@ public class DialogoHistoria : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Mapa");
+            SceneManager.LoadScene("Puzzle1");
         }
     }
 
