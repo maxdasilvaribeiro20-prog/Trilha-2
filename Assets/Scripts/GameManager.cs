@@ -147,8 +147,9 @@
         }
 
         IEnumerator EsconderMensagem(float segundos)
-        {
+        {   if (winText != null){
             yield return new WaitForSeconds(segundos);
             winText.gameObject.SetActive(false);
+        }
         }
     }
