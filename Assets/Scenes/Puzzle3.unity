@@ -8319,7 +8319,7 @@ Light:
   serializedVersion: 13
   m_Type: 1
   m_Color: {r: 0.21755074, g: 0.23565888, b: 0.3660378, a: 1}
-  m_Intensity: 15
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -18254,6 +18254,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 857515383}
     m_Modifications:
+    - target: {fileID: 2357419356555822538, guid: cf22a2db10f09a34495e9f83913738c8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2357419356555822539, guid: cf22a2db10f09a34495e9f83913738c8, type: 3}
       propertyPath: m_Name
       value: 'PP_Meadow_07 '
