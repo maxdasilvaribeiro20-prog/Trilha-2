@@ -41,7 +41,7 @@ public class DialogoHistoria : MonoBehaviour
     {
         textoHistoria.text = falas[indice];
 
-        if (indice == 1 && audioSource !=null && somTiro !=null)
+        if (indice == 6 && audioSource !=null && somTiro !=null)
     {
         audioSource.PlayOneShot(somTiro);
     }

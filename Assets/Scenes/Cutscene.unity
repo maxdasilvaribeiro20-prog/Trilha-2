@@ -2331,7 +2331,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -2538,7 +2538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.036845807, g: 0.2603773, b: 0.09971405, a: 0.7490196}
+  m_Color: {r: 0.19999999, g: 0.18226413, b: 0.18226413, a: 0.5921569}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2580,13 +2580,16 @@ MonoBehaviour:
   textoHistoria: {fileID: 2111866978}
   botaoContinuar: {fileID: 1793154}
   falas:
-  - "Em um dia qualquer, um lenhador saiu para ca\xE7ar.\r\n"
-  - "E matou um animal por divers\xE3o.\r\n"
-  - 'Agora ele precisa resolver os puzzles para escapar da ira de Comadre Filozinha!
-
-'
-  - "Lembre-se, ao ouvir um assovio baixo, quer dizer que ela est\xE1 por perto.\r\n"
-  - "Se for alto, ela est\xE1 longe."
+  - Antonio Dias era um lenhador que de vez em quando ia passar alguns dias na sua casa na floresta.
+  - "Ele gostava de ca\xE7ar e sempre que ia para sua casa cortava algumas \xE1rvores para fazer uma fogueira ou colocar na sua lareira."
+  - "Em um certo dia em que ele foi passar um tempo na sua casa, come\xE7ou a fazer suas coisas de costume."
+  - "Quando escureceu ele acendeu sua lareira, pegou sua arma e foi ca\xE7ar algum animal."
+  - "Durante a sua ca\xE7ada ele encontrou um animal."
+  - "At\xE9 que..."
+  - BLAM!!
+  - "Ele havia matado um pre\xE1."
+  - "Mas mal sabia ele que aquele pre\xE1..."
+  - Estava marcada pela COMADRE FLORZINHA!!!!
 --- !u!82 &1748839917
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3238,7 +3241,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
