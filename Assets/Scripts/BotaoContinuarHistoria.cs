@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class DialogoHistoria : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class DialogoHistoria : MonoBehaviour
     public AudioClip somTiro;
     public TMP_Text textoHistoria;
     public Button botaoContinuar;
+
 
     [TextArea(3, 5)]
     public string[] falas;
@@ -39,7 +41,7 @@ public class DialogoHistoria : MonoBehaviour
     {
         textoHistoria.text = falas[indice];
 
-        if (indice == 1)
+        if (indice == 1 && audioSource !=null && somTiro !=null)
     {
         audioSource.PlayOneShot(somTiro);
     }

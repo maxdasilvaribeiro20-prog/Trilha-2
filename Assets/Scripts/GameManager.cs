@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
         if (arvoresPlantadas >= arvoresNecessarias)
         {
 
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(5);
         }
     }
 
