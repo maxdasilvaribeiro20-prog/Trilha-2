@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -31,6 +30,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int totalGolens = 3;
     [SerializeField] private int golens;
     [SerializeField] private int cenaAposGolens = -1;
+
+    //troca de cena
+    [SerializeField] private float tempoAntesDaTroca = 3f; // espera antes de mudar de puzzle
+    private bool trocandoCena;
+
     public int seeds;
 
     void Awake()
@@ -83,13 +87,15 @@ public class GameManager : MonoBehaviour
 
     public void RegistrarArvorePlantada()
     {
+        if (trocandoCena) return;
+
         arvoresPlantadas++;
 
 
         if (arvoresPlantadas >= arvoresNecessarias)
         {
-
-            SceneManager.LoadScene(5);
+            MostrarMensagemPassaro("Você plantou todas as árvores!", 0f);
+            TrocarCenaDepois(5, tempoAntesDaTroca);
         }
     }
 
@@ -98,6 +104,10 @@ public class GameManager : MonoBehaviour
 
     public void CapturarPassaro(BirdColletable p)
     {
+        if (trocandoCena) return;                       // já terminou, esperando a troca de cena
+        if (birds >= ordemPassaros.Length) return;
+        if (capturados.Contains(p)) return;
+
         if (string.Equals(p.id.Trim(), ordemPassaros[birds].Trim(),
                 System.StringComparison.OrdinalIgnoreCase))
         {
@@ -110,7 +120,7 @@ public class GameManager : MonoBehaviour
             {
                 MostrarMensagemPassaro("Você encontrou todos os pássaros na ordem certa!", 0f);
 
-                SceneManager.LoadScene(3);
+                TrocarCenaDepois(3, tempoAntesDaTroca);
             }
             else
             {
@@ -140,14 +150,14 @@ public class GameManager : MonoBehaviour
         if (birdText == null) return;
 
         if (birds >= ordemPassaros.Length)
-            birdText.text = "Pássaros: " + birds + "/" + ordemPassaros.Length;
+            birdText.text = "Encontre os Pássaros: " + birds + "/" + ordemPassaros.Length;
         else
-            birdText.text = "Pássaros: " + birds + "/" + ordemPassaros.Length
+            birdText.text = "Encontre os Pássaros: " + birds + "/" + ordemPassaros.Length
                         + "\nPróximo: " + ordemPassaros[birds];
     }
 
     //golem
-    public void AddGolem(GolemColletable g)
+    public void AddGolem(GolemProximo g)
     {
         if (golens >= totalGolens) return; // já encontrou todos
 
@@ -158,10 +168,7 @@ public class GameManager : MonoBehaviour
         {
             MostrarMensagemPassaro("Você encontrou todos os golens!", 0f);
 
-                
-               
-               //yield return new WaitForSeconds(3);
-                //SceneManager.LoadScene(indice);
+            TrocarCenaDepois(7, tempoAntesDaTroca);
         }
         else
         {
@@ -177,6 +184,7 @@ public class GameManager : MonoBehaviour
 
     void MostrarMensagemPassaro(string msg, float segundos)
     {
+        if (winText == null) return;
         if (rotinaMensagem != null) StopCoroutine(rotinaMensagem);
 
         winText.text = msg;
@@ -193,5 +201,21 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(segundos);
             winText.gameObject.SetActive(false);
         }
+    }
+
+    // ---------- Troca de cena ----------
+
+    // espera um tempo (com a mensagem na tela) e então carrega a cena
+    void TrocarCenaDepois(int indice, float segundos)
+    {
+        if (trocandoCena) return;
+        trocandoCena = true;
+        StartCoroutine(CarregarCenaPorNome(indice, segundos));
+    }
+
+    IEnumerator CarregarCenaPorNome(int indice, float segundos)
+    {
+        yield return new WaitForSeconds(segundos);
+        SceneManager.LoadScene(indice);
     }
 }

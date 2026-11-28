@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class GolemColletable : MonoBehaviour
+public class GolemProximo : MonoBehaviour
 {
     [SerializeField] private float tempoAntesDeSumir = 2f; // tempo para o aceno aparecer antes de o golem sumir
 
     private Animator animator;
+    private bool playerNear;
+    private bool jaAcenou;
     private bool coletado;
 
     void Start()
@@ -13,20 +16,40 @@ public class GolemColletable : MonoBehaviour
         animator = GetComponentInChildren<Animator>(); // pega o Animator do golem
     }
 
+    void Update()
+    {
+        if (playerNear && !coletado && Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
+            Coletar();
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if (coletado) return;
+        if (coletado || !EhPlayer(other)) return;
 
-        bool ehPlayer = other.CompareTag("Player")
-                        || other.GetComponentInParent<CharacterController>() != null;
+        playerNear = true;
+        GameManager.Instance.ShowPrompt("Pressione E para coletar o golem");
 
-        if (!ehPlayer) return;
-
-        coletado = true;
-
-        if (animator != null)
+        // acena uma vez quando o jogador chega perto
+        if (!jaAcenou && animator != null)
+        {
+            jaAcenou = true;
             animator.SetTrigger("Acenar");
+        }
+    }
 
+    void OnTriggerExit(Collider other)
+    {
+        if (!EhPlayer(other)) return;
+
+        playerNear = false;
+        if (!coletado) GameManager.Instance.HidePrompt();
+    }
+
+    void Coletar()
+    {
+        coletado = true;
+        playerNear = false;
+        GameManager.Instance.HidePrompt();
         GameManager.Instance.AddGolem(this);
         StartCoroutine(SumirDepois());
     }
@@ -35,5 +58,11 @@ public class GolemColletable : MonoBehaviour
     {
         yield return new WaitForSeconds(tempoAntesDeSumir);
         gameObject.SetActive(false);
+    }
+
+    bool EhPlayer(Collider other)
+    {
+        return other.CompareTag("Player")
+               || other.GetComponentInParent<CharacterController>() != null;
     }
 }
